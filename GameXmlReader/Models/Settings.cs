@@ -50,6 +50,8 @@ public class TargetValidator : AbstractValidator<Target>
 
 public record FlaggedTerms
 {
+    public List<string> Names { get; init; }
+
     public List<string> Genres { get; init; }
 
     public List<string> Words { get; init; }
@@ -61,6 +63,7 @@ public class FlaggedTermsValidator : AbstractValidator<FlaggedTerms>
 {
     public FlaggedTermsValidator()
     {
+        RuleFor(x => x.Names).NotNull();
         RuleFor(x => x.Genres).NotNull();
         RuleFor(x => x.Words).NotNull();
         RuleFor(x => x.Publishers).NotNull();

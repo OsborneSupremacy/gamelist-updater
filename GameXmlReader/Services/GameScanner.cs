@@ -16,6 +16,7 @@ public class GameScanner
 
         _flagChecks = new()
         {
+            HasFlaggedName,
             HasFlaggedGenre,
             HasFlaggedWord,
             HasFlaggedPublisher,
@@ -30,6 +31,14 @@ public class GameScanner
                 {
                     yield return game;
                 }
+    }
+
+    private bool HasFlaggedName(Game game)
+    {
+        foreach (var flaggedName in _settings.FlaggedTerms.Names)
+            if (game.Name.Contains(flaggedName, StringComparison.OrdinalIgnoreCase))
+                return true;
+        return false;
     }
 
     private bool HasFlaggedGenre(Game game)

@@ -17,12 +17,12 @@ public class GameListService
 
     public GameList RemoveFlaggedGames(GameList gameListIn, List<Game> flaggedGames)
     {
-        var flagggedIds = flaggedGames
-            .Select(x => x.Id);
+        var flaggedPaths = flaggedGames
+            .Select(x => x.Path);
 
         var validGames = gameListIn
             .Games
-            .Where(x => !flagggedIds.Contains(x.Id))
+            .Where(x => !flaggedPaths.Contains(x.Path))
             .ToList();
 
         return gameListIn with
@@ -33,12 +33,12 @@ public class GameListService
 
     public GameList GetFlaggedGamesOnly(GameList gameListIn, List<Game> flaggedGames)
     {
-        var flagggedIds = flaggedGames
-            .Select(x => x.Id);
+        var flaggedPaths = flaggedGames
+            .Select(x => x.Path);
 
         var validGames = gameListIn
             .Games
-            .Where(x => flagggedIds.Contains(x.Id));
+            .Where(x => flaggedPaths.Contains(x.Path));
 
         return gameListIn with
         {
