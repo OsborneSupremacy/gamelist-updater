@@ -24,6 +24,8 @@ await Host.CreateDefaultBuilder()
         services.AddSingleton<ExecutorService>();
         services.AddSingleton<GameXmlService>();
         services.AddSingleton<GameScanner>();
+        services.AddSingleton<GameListService>();
+        services.AddSingleton<FileSystemService>();
     })
     .UseSerilog()
     .RunConsoleAsync();
