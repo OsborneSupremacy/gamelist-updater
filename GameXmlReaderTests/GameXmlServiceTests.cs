@@ -1,6 +1,6 @@
 ﻿namespace GameXmlReaderTests;
 
-using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Reflection;
 using FluentAssertions;
@@ -8,6 +8,7 @@ using GameXmlReader.Models;
 using GameXmlReader.Services;
 using Xunit;
 
+[ExcludeFromCodeCoverage]
 public class GameXmlServiceTests
 {
     private readonly GameXmlService _service = new GameXmlService();
