@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<gameList>
+  <provider>
+    <System>Mame</System>
+    <software>Skraper</software>
+    <database>ScreenScraper.fr</database>
+    <web>http://www.screenscraper.fr</web>
+  </provider>
+  <game id="39869" source="ScreenScraper.fr">
+    <path>./005.zip</path>
+    <name>005</name>
+    <desc>Agent 005 brings new cash collections to you. His mission is to deliver secret attache cases to an awaiting helicopter. Through wily street chases and the shadows of warehouse darkness to slippery skating rink maneuvers and the blazing aerial getaway fight. Agent 005 steels the scene and delivers customers to you. Fun-filled music attracts them. Four thrilling escape scenes challenge them and the continuous fun keeps them playing and playing. The unique audio and video excitement matches every players skill level.</desc>
+    <rating>0.6</rating>
+    <releasedate>19810101T000000</releasedate>
+    <developer>SEGA</developer>
+    <publisher>SEGA</publisher>
+    <genre>Action-Shooter Small-Action / Labyrinth</genre>
+    <players>1-2</players>
+    <image>./media/images/005.png</image>
+    <marquee>./media/marquee/005.png</marquee>
+    <video>./media/videos/005.mp4</video>
+    <genreid>258</genreid>
+  </game>
+  <game id="41554" source="ScreenScraper.fr">
+    <path>./gtmr.zip</path>
+    <name>1000 Miglia: Great 1000 Miles Rally (94/07/18)</name>
+    <desc>Great 1000 Miles Rally © 1994 Kaneko.
+
+A racing game featuring classic cars from Ferrari, Alfa Romeo, Mercedes Benz and more.</desc>
+    <rating>0.9</rating>
+    <releasedate>19940101T000000</releasedate>
+    <developer>Kaneko</developer>
+    <publisher>Kaneko</publisher>
+    <genre>Race, Driving / Race-Race, Driving</genre>
+    <players>1-2</players>
+    <image>./media/images/gtmrusa.png</image>
+    <marquee>./media/marquee/gtmrusa.png</marquee>
+    <video>./media/videos/gtmrusa.mp4</video>
+    <genreid>1537</genreid>
+  </game>
+</gameList>

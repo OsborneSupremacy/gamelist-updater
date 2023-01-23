@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameXmlReader", "GameXmlReader\GameXmlReader.csproj", "{07F8BFAA-401F-4E47-B884-AEDE700686C0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameXmlReaderTests", "GameXmlReaderTests\GameXmlReaderTests.csproj", "{C0F38089-C646-4C45-93B9-88C232CD542D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{07F8BFAA-401F-4E47-B884-AEDE700686C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07F8BFAA-401F-4E47-B884-AEDE700686C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07F8BFAA-401F-4E47-B884-AEDE700686C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07F8BFAA-401F-4E47-B884-AEDE700686C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0F38089-C646-4C45-93B9-88C232CD542D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0F38089-C646-4C45-93B9-88C232CD542D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0F38089-C646-4C45-93B9-88C232CD542D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0F38089-C646-4C45-93B9-88C232CD542D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C0499770-F605-4D79-97AD-FF0160308B60}
+	EndGlobalSection
+EndGlobal
