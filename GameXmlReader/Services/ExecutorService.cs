@@ -1,6 +1,7 @@
 ﻿using GameXmlReader.Models;
 using Microsoft.Extensions.Logging;
 using System;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -33,14 +34,19 @@ public class ExecutorService
 
     public async Task<bool> ExecuteAsync(CancellationToken cancellationToken)
     {
+        var tempPath = Path.Combine(
+            Path.GetTempPath(),
+            "GameXmlUpdater",
+            Guid.NewGuid().ToString()
+        );
+
         _logger.LogInformation("Target directory: {targetDirectory}", _settings.Target.Directory);
         _logger.LogInformation("Target GameList: {targerGameList}", _settings.Target.Xml);
 
         _logger.LogInformation("Deserializing game list...");
 
-        var gameList = _gameXmlService.DeserializeXml(
-            Utility.ReadFileWithoutLocking(_settings.Target.Xml)
-        );
+        var currentGameListRaw = Utility.ReadFileWithoutLocking(_settings.Target.Xml);
+        var gameList = _gameXmlService.DeserializeXml(currentGameListRaw);
 
         _logger.LogInformation("Done. {gameCount} games found in XML.", gameList.Games.Count());
 
@@ -64,7 +70,12 @@ public class ExecutorService
         var newGameList = _gameListService.RemoveFlaggedGames(gameList, flaggedGames);
         var flaggedGameList = _gameListService.GetFlaggedGamesOnly(gameList, flaggedGames);
 
-        await _fileSystemService.WriteNewGamesListToTempAsync(newGameList, flaggedGameList);
+        await _fileSystemService.WriteNewGameListToTempAsync(
+            tempPath,
+            currentGameListRaw,
+            newGameList,
+            flaggedGameList
+            );
 
         if (!PromptForVerification("Proceed with getting all files that will be deleted? This includes the actual game files, plus images, marquees, and videos."))
             return false;
@@ -73,17 +84,23 @@ public class ExecutorService
 
         _logger.LogInformation("{filesToDelete} files will be deleted.", filesToDelete.Count);
 
+        if (!PromptForVerification("Proceed with deleting all files, and updating the game list XML? This cannot be undone.", LogLevel.Warning))
+            return false;
 
+        _fileSystemService.DeleteFiles(filesToDelete);
+        await _fileSystemService.WriteNewGameListToProductionAsync(newGameList);
+
+        _logger.LogInformation("Success");
 
         return true;
     }
 
-    public bool PromptForVerification(string prompt)
+    public bool PromptForVerification(string prompt, LogLevel logLevel = LogLevel.Information)
     {
         bool? result = null;
         while(!result.HasValue)
         {
-            _logger.LogInformation($"{prompt} (1, Y = Yes, 0, 2, N = No): ");
+            _logger.Log(logLevel, $"{prompt} (1, Y = Yes, 0, 2, N = No): ");
             result = Console.ReadKey().KeyChar.ToString().ToUpperInvariant() switch
             {
                 "1" => true,

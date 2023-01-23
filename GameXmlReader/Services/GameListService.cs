@@ -22,11 +22,12 @@ public class GameListService
 
         var validGames = gameListIn
             .Games
-            .Where(x => !flagggedIds.Contains(x.Id));
+            .Where(x => !flagggedIds.Contains(x.Id))
+            .ToList();
 
         return gameListIn with
         {
-            Games = validGames.ToList()
+            Games = validGames
         };
     }
 
