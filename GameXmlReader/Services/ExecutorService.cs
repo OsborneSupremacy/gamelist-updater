@@ -1,7 +1,6 @@
 ﻿using GameXmlReader.Models;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,12 +13,15 @@ public class ExecutorService
 
     private readonly GameXmlService _gameXmlService;
 
+    private readonly GameScanner _gameScanner;
+
     private readonly Settings _settings;
 
-    public ExecutorService(ILogger<ExecutorService> logger, GameXmlService gameXmlService, Settings settings)
+    public ExecutorService(ILogger<ExecutorService> logger, GameXmlService gameXmlService, GameScanner gameScanner, Settings settings)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _gameXmlService = gameXmlService ?? throw new ArgumentNullException(nameof(gameXmlService));
+        _gameScanner = gameScanner ?? throw new ArgumentNullException(nameof(gameScanner));
         _settings = settings ?? throw new ArgumentNullException(nameof(settings));
     }
 
@@ -43,22 +45,7 @@ public class ExecutorService
         if (!PromptForVerification("Proceed with scan? This will look for flagged terms in game list."))
             return Task.FromResult(false);
 
-        List<Game> flaggedGames = new();
-
-        List<Func<Game, bool>> _flagChecks = new()
-        {
-            HasFlaggedGenre,
-            HasFlaggedWord,
-            HasFlaggedPublisher,
-        };
-
-        foreach(var game in gameList.Games)
-            foreach(var flagCheck in _flagChecks)
-                if (flagCheck(game))
-                {
-                    flaggedGames.Add(game);
-                    continue;
-                }
+        var flaggedGames = _gameScanner.ScanForFlaggedGames(gameList.Games).ToList();
 
         if(!flaggedGames.Any())
         {
@@ -70,31 +57,6 @@ public class ExecutorService
 
 
         return Task.FromResult(true);
-    }
-
-
-    public bool HasFlaggedGenre(Game game)
-    {
-        foreach (var flaggedGenre in _settings.FlaggedTerms.Genres)
-            if ((game.Genre ?? string.Empty).Contains(flaggedGenre, Str1ingComparison.OrdinalIgnoreCase))
-                return true;
-        return false;
-    }
-
-    public bool HasFlaggedWord(Game game)
-    {
-        foreach (var word in _settings.FlaggedTerms.Words)
-            if ((game.Desc ?? string.Empty).Contains(word, StringComparison.OrdinalIgnoreCase))
-                return true;
-        return false;
-    }
-
-    public bool HasFlaggedPublisher(Game game)
-    {
-        foreach (var publisher in _settings.FlaggedTerms.Publishers)
-            if ((game.Publisher ?? string.Empty).Contains(publisher, StringComparison.OrdinalIgnoreCase))
-                return true;
-        return false;
     }
 
     public bool PromptForVerification(string prompt)

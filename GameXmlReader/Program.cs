@@ -23,6 +23,7 @@ await Host.CreateDefaultBuilder()
         services.AddSingleton(settings);
         services.AddSingleton<ExecutorService>();
         services.AddSingleton<GameXmlService>();
+        services.AddSingleton<GameScanner>();
     })
     .UseSerilog()
     .RunConsoleAsync();
