@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using OsborneSupremacy.Extensions.AspNet;
+using System.IO.Abstractions;
 
 var configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json")
@@ -25,6 +26,9 @@ await Host.CreateDefaultBuilder()
         services.AddSingleton<GameScanner>();
         services.AddSingleton<GameListService>();
         services.AddSingleton<FileSystemService>();
+
+        services.AddTransient<IFileSystem, FileSystem>();
+        services.AddTransient<FileSystemService>();
     })
     .UseSerilog()
     .RunConsoleAsync();
