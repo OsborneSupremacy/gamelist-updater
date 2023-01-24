@@ -12,6 +12,7 @@ public class GameScanner
 
         _flagChecks = new()
         {
+            AdultFieldIsTrue,
             HasFlaggedName,
             HasFlaggedGenre,
             HasFlaggedWord,
@@ -27,6 +28,13 @@ public class GameScanner
                 {
                     yield return game;
                 }
+    }
+
+    private bool AdultFieldIsTrue(Game game)
+    {
+        if (!bool.TryParse(game.Adult ?? string.Empty, out var isAdult))
+            return false;
+        return isAdult;
     }
 
     private bool HasFlaggedName(Game game)

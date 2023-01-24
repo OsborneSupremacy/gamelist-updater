@@ -64,6 +64,10 @@ You're going to want to open and customize this program's [appsettings.json](Gam
 
 Here are the setting to adjust:
 
+#### FlagWhenAdultFieldIsTrue
+
+The `game` XML object sometimes contains an `adult` node. If this setting is set to `true`, games with a value of `true` in the adult node will be flagged.
+
 #### Target
 
 ```json
