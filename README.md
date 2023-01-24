@@ -5,7 +5,7 @@ This is a utility designed to make bulk updates (at this point, deletes only) to
 
 If you use Emulation Station via [Retro Pie](https://retropie.org.uk/) or other means, you may find that your collection of legitimate ROMs contains a lot of games that you don't really want. Possible reasons:
 
-* They're age inappropriate
+* They're age inappropriate (or inappropriate for any age)
 * They're types of games you're not interested in
 * They're just bad games
 * All of the above
@@ -60,7 +60,7 @@ With that data populated, we can proceed to delete games meeting various criteri
 
 ### Configure
 
-You're going to want to open and customize this program's appsettings.json file.
+You're going to want to open and customize this program's [appsettings.json](GameXmlReader/appsettings.json) file.
 
 Here are the setting to adjust:
 
@@ -82,7 +82,7 @@ You can verify the file paths in a file explorer window. If "RETROPIE" doesn't w
 
 #### FlaggedTerms
 
-The flagged terms currently in appsettings are my preferences only. For example, I'm totally find deleting every Mahjong-related game. If you're not, you're going to want to remove that. Customize the terms as your desire. As you'll notice, you can customize keywords in ROM names, genres, descriptions (the "words" section), and publishers.
+The flagged terms currently in appsettings are my preferences only. For example, I'm totally find deleting every Mahjong-related game. If you're not, you're going to want to remove that. Customize the terms as your desire. As you'll notice, you can customize keywords in rom names, genres, descriptions (the "words" section), and publishers.
 
 ### Run
 
@@ -96,7 +96,7 @@ If it does, it will create three files in a temporary directory on your computer
 * `gamelist-flagged.xml` - this is a list of only the flagged games. If games are in the the list that you don't want deleted, do not commit the operation.
 * `gamelist-new.xml` - this is what gamelist.xml will be updated to, if you commit the operation.
 
-If you commit the update, the program will try to delete the ROM and any media files associated with it.
+If you commit the update, the program will try to delete the rom and any media files associated with it.
 
 ## Contribute
 
