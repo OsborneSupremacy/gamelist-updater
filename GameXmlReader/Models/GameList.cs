@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Xml.Serialization;
-
-namespace GameXmlReader.Models;
+﻿namespace GameXmlReader.Models;
 
 [XmlRoot(ElementName = "gameList")]
 public record GameList

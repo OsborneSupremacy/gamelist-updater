@@ -1,6 +1,4 @@
 ﻿using FluentValidation;
-using System.Collections.Generic;
-using System.IO;
 
 namespace GameXmlReader.Models;
 

@@ -4,7 +4,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using OsborneSupremacy.Extensions.AspNet;
-using GameXmlReader.Models;
 
 var configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json")

@@ -1,6 +1,4 @@
-﻿using System.IO;
-
-namespace GameXmlReader;
+﻿namespace GameXmlReader;
 
 public static class Utility
 {

@@ -1,10 +1,4 @@
-﻿using GameXmlReader.Models;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-
-namespace GameXmlReader.Services;
+﻿namespace GameXmlReader.Services;
 
 public class GameListService
 {

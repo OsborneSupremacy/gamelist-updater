@@ -1,8 +1,4 @@
-﻿using GameXmlReader.Models;
-using System;
-using System.Collections.Generic;
-
-namespace GameXmlReader.Services;
+﻿namespace GameXmlReader.Services;
 
 public class GameScanner
 {

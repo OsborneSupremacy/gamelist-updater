@@ -1,11 +1,4 @@
-﻿using GameXmlReader.Models;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
-
-namespace GameXmlReader.Services;
+﻿namespace GameXmlReader.Services;
 
 public class FileSystemService
 {

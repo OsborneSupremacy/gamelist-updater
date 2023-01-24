@@ -1,6 +1,4 @@
-﻿using System.Xml.Serialization;
-
-namespace GameXmlReader.Models;
+﻿namespace GameXmlReader.Models;
 
 [XmlRoot(ElementName = "game")]
 public record Game
