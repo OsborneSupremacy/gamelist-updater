@@ -42,7 +42,10 @@ public class ExecutorService
 
         _logger.LogInformation("Done. {gameCount} games found in XML.", gameList.Games.Count());
 
-        if(_settings.FlagWhenAdultFieldIsTrue ?? false)
+        if (_settings.FlagUnidentifiedGames ?? false)
+            _logger.LogWarning("Unidentified games will be flagged!");
+
+        if (_settings.FlagWhenAdultFieldIsTrue ?? false)
             _logger.LogInformation("Games with <adult>true</adult> will be flagged");
         else
             _logger.LogInformation("Games with <adult>true</adult> will *not* be flagged");

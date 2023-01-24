@@ -68,6 +68,10 @@ Here are the setting to adjust:
 
 The `game` XML object sometimes contains an `adult` node. If this setting is set to `true`, games with a value of `true` in the adult node will be flagged.
 
+#### FlagUnidentifiedGames
+
+**This is an important setting**. It is `false` by default. This will remove any game not identified in the scraping process (therefore with an `id` of `0`). It will probably remove a lot of games. Use it with extreme caution.
+
 #### Target
 
 ```json

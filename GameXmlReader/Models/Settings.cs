@@ -6,6 +6,8 @@ public record Settings
 {
     public bool? FlagWhenAdultFieldIsTrue { get; init; }
 
+    public bool? FlagUnidentifiedGames { get; init; }
+
     public Target Target { get; init; }
 
     public FlaggedTerms FlaggedTerms { get; set; }
@@ -15,8 +17,8 @@ public class SettingsValidator : AbstractValidator<Settings>
 {
     public SettingsValidator()
     {
-        RuleFor(x => x.FlagWhenAdultFieldIsTrue)
-            .NotNull();
+        RuleFor(x => x.FlagWhenAdultFieldIsTrue).NotNull();
+        RuleFor(x => x.FlagUnidentifiedGames).NotNull();
 
         RuleFor(x => x.Target)
             .NotNull()

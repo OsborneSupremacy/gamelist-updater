@@ -12,6 +12,7 @@ public class GameScanner
 
         _flagChecks = new()
         {
+            IsUnidentified,
             AdultFieldIsTrue,
             HasFlaggedName,
             HasFlaggedGenre,
@@ -30,8 +31,15 @@ public class GameScanner
                 }
     }
 
+    private bool IsUnidentified(Game game)
+    {
+        if (!_settings.FlagUnidentifiedGames ?? false) return false;
+        return (game.Id ?? string.Empty) == "0";
+    }
+
     private bool AdultFieldIsTrue(Game game)
     {
+        if (!_settings.FlagWhenAdultFieldIsTrue ?? false) return false;
         if (!bool.TryParse(game.Adult ?? string.Empty, out var isAdult))
             return false;
         return isAdult;
